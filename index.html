@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="font-roboto min-h-[1000px]">
+<html lang="en" class="font-roboto min-h-[2000px]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- G.font Link End -->
+    <style>
+        /* .test ~ .test2{
+            background-color: red;
+            display: block;
+        } */
+    </style>
 </head>
 <body>
     <!-- Hero Section -->
@@ -30,7 +36,7 @@
     <!-- Hero Section End -->
 
     <!-- User Section Start -->
-    <section id="user" class="pt-36 pb-32">
+    <section id="user" class="pb-32">
         <div class="container">
             <div class="flex flex-wrap mx-4">
                 <div class="w-full mb-12">
@@ -39,7 +45,7 @@
                 </div>
                 <div class="w-full flex flex-wrap shadow-lg rounded-lg overflow-hidden">
                     <div class="w-full flex mb-4">
-                        <div class="w-[100px] h-[100px] bg-cover bg-center shadow-lg rounded-sm" style="background-image: url(src/img/profile.png);"></div>
+                        <div class="w-[100px] h-[100px] bg-cover bg-center shadow-lg rounded-sm m-4" style="background-image: url(src/img/profile.png);"></div>
                         <div class="flex-1 p-4 overflow-hidden">
                             <h1 class="text-dark text-xl font-bold truncate">Wilbert Bernardi</h1>
                             <h3 class="text-dark font-light">wilbertfe | users</h3>
@@ -67,10 +73,30 @@
     </section>
     <!-- User Section End -->
 
-<script>
-    // fetch('https://api.github.com/users/wilbertfe')
-    //     .then(response => response.json())
-    //     .then(response => console.log(response));
-</script>
+    <!-- Repository Section Start -->
+    <section id="repository" class="pb-32">
+        <div class="container">
+            <div class="flex flex-wrap mx-4">
+                <div class="w-full mb-12">
+                    <h1 class="text-dark text-3xl text-center font-bold">Repos Information</h1>
+                    <p class="text-dark text-lg text-center font-light">repository</p>
+                </div>
+                <div class="w-full p-4 shadow-lg rounded-lg overflow-auto">
+                    <div>
+                        <h3 class="font-medium"><span class="font-bold">Repo-1</span> : <span class="text-blue-800 underline cursor-pointer">Jaaz</span></h3>
+                        <ul class="list-inside list-disc">
+                            <li class="text-sm"><span class="font-medium">forks_count</span> : 0</li>
+                            <li class="text-sm"><span class="font-medium">watchers_count</span> : 0</li>
+                            <li class="text-sm"><span class="font-medium">language</span> : CSS</li>
+                            <li class="text-sm"><span class="font-medium">url</span> : <a href="https://github.com/WilbertFE/burgerWeb" class="text-blue-700">https://github.com/WilbertFE/burgerWeb</a></li>
+                            <li class="text-sm"><span class="font-medium">description</span> : website promosi burger</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Repository Section End -->
+
 </body>
 </html>
