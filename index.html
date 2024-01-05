@@ -22,10 +22,8 @@
             <div class="flex flex-wrap">
                 <div class="w-full flex">
                     <div class="relative mx-auto">
-                        
-                            <input type="text" id="input-value" class="w-[230px] px-1 border border-black"/>
-                            <button id="my-btn" class="bg-dark text-white px-4 absolute right-0 top-0 bottom-0 font-medium">Cari</button>
-                        
+                        <input type="text" id="input-value" class="w-[240px] px-1 border border-black placeholder:text-black/30" placeholder="enter username"/>
+                        <button id="my-btn" class="bg-dark text-sm text-white px-1 absolute right-0 top-0 bottom-0 font-medium">search</button>
                     </div>
                 </div>
             </div>
@@ -34,7 +32,7 @@
     <!-- Input Section End -->
 
     <!-- Hero Section -->
-    <section id="hero" class="pt-36 pb-32">
+    <section id="hero" class="pt-24 pb-32">
         <div class="container">
             <div class="flex flex-wrap mx-4">
                 <div class="w-full">
@@ -91,17 +89,21 @@
             <div class="flex flex-wrap mx-4">
                 <div class="w-full mb-12">
                     <h1 class="text-dark text-3xl text-center font-bold">Repos Information</h1>
-                    <p class="text-dark text-lg text-center font-light">repository</p>
+                    <p class="text-dark text-lg text-center font-light">repositories (max 30)</p>
                 </div>
-                <div class="w-full p-4 shadow-lg rounded-lg overflow-auto">
-                    <div>
-                        <h3 class="font-medium"><span class="font-bold">Repo-1</span> : <span class="text-blue-800 underline cursor-pointer">Jaaz</span></h3>
-                        <ul class="list-inside list-disc">
-                            <li class="text-sm"><span class="font-medium">forks_count</span> : 0</li>
-                            <li class="text-sm"><span class="font-medium">watchers_count</span> : 0</li>
-                            <li class="text-sm"><span class="font-medium">language</span> : CSS</li>
-                            <li class="text-sm"><span class="font-medium">url</span> : <a href="https://github.com/WilbertFE/burgerWeb" class="text-blue-700">https://github.com/WilbertFE/burgerWeb</a></li>
-                            <li class="text-sm"><span class="font-medium">description</span> : website promosi burger</li>
+                <div id="repo-card" class="w-full p-4 shadow-lg rounded-lg">
+                    <div class="my-4">
+                        <h1 class="text-dark font-medium"><span class="font-bold">Public_repos</span> : 11</h1>
+                    </div>
+                    <div class="flex flex-wrap my-4">
+                        <h1 class="text-dark font-medium">repo_1 :</h1>
+                        <h3 class="nama-repo ml-2 text-blue-800 underline cursor-pointer">Jaaz</h3>
+                        <ul class="hidden w-full list-inside list-disc sub-repo">
+                            <li class="text-sm">forks_count : 0</li>
+                            <li class="text-sm">watchers_count: 0</li>
+                            <li class="text-sm">language : CSS</li>
+                            <li class="text-sm">url : <a href="https://github.com/WilbertFE/burgerWeb" target="_blank" class="text-blue-800 underline">https://github.com/wilberfe/jaaz</a></li>
+                            <li class="text-sm">desc : website untuk promosi burger</li>
                         </ul>
                     </div>
                 </div>
@@ -110,6 +112,17 @@
     </section>
     <!-- Repository Section End -->
 
+    <!-- Loading Animation Section Start -->
+    <section id="animation" class="pt-36 pb-32 hidden">
+        <div class="container">
+            <div class="flex flex-wrap">
+                <div class="w-full">
+                    <div class="w-[100px] h-[100px] mx-auto rounded-full border-[3px] border-transparent border-t-black animate-spin"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Loading Animation Section End -->
 
 <script src="dist/main.js"></script>
 </body>

@@ -1,16 +1,55 @@
 
-
+// ambil element yang dibutuhkan
 const myBtn = document.querySelector('#my-btn');
 const input = document.querySelector('#input-value');
 
+const hero = document.querySelector('#hero');
+const user = document.querySelector('#user');
+const repo = document.querySelector('#repository');
+const animation = document.querySelector('#animation');
 
+// fetch data ketika tombol diklik
 myBtn.addEventListener('click', async function(){
+    // menonaktifkan setiap section
+    hero.classList.add('hidden');
+    user.classList.add('hidden');
+    repo.classList.add('hidden');
+    // mengaktifkan section animasi
+    animation.classList.remove('hidden');
+    // menampung nilai input
+    const inputValue = input.value;
+    try {
     // mengambil data user
-    const dataUser = await getDataUser(input.value);
-    // update ui hero
+    const dataUser = await getDataUser(inputValue);
+    // update ui hero section
     updateHero(dataUser);
-    // update ui user
+    // update ui user section
     updateUser(dataUser);
+    // ambil data repo
+    const dataRepo = await getDataRepo(inputValue);
+    // updaste ui repo section
+    updateRepo(dataRepo, dataUser); 
+    } catch(err){
+        alert(err);
+        console.error(err);
+    } finally{
+        // reset input
+        input.value = '';
+        // menonaktifkan section animation
+        animation.classList.add('hidden');
+        // aktifkan setiap section
+        hero.classList.remove('hidden');
+        user.classList.remove('hidden');
+        repo.classList.remove('hidden');
+        console.log('ok');
+    }
+});
+
+// sub-repo feature (event binding)
+document.addEventListener('click', function(e) {
+    if(e.target.classList.contains('nama-repo')){
+        e.target.classList.toggle('judul-repo');
+    }
 });
 
 
@@ -21,6 +60,17 @@ myBtn.addEventListener('click', async function(){
 
 function getDataUser(username){
     return fetch(`https://api.github.com/users/${username}`)
+        .then(response => {
+            if(response.ok === false || response.status === 404){
+                throw new Error('User Tidak ditemukan');
+            }
+            return response.json();
+        })
+        .then(response => response);
+}
+
+function getDataRepo(username){
+    return fetch(`https://api.github.com/users/${username}/repos`)
         .then(response => response.json())
         .then(response => response);
 }
@@ -40,7 +90,6 @@ function updateHero(dataUser){
     `;
     const hero = document.querySelector('#hero');
     hero.innerHTML = fragment;
-    input.value = '';
 }
 
 function updateUser(dataUser){
@@ -82,4 +131,30 @@ function updateUser(dataUser){
     `;
     const user = document.querySelector('#user');
     user.innerHTML = fragment;
+}
+
+function updateRepo(dataRepo, dataUser){
+    let fragment = '';
+    fragment += `
+    <div class="my-4">
+        <h1 class="text-dark font-medium"><span class="font-bold">Public_repos</span> : ${dataUser.public_repos}</h1>
+    </div>
+    `;
+    for (let i = 0; i<dataRepo.length; i++){
+        fragment += `
+        <div class="flex flex-wrap my-4">
+            <h1 class="text-dark font-medium">repo_${i+1} :</h1>
+            <h3 class="nama-repo ml-2 text-blue-800 underline cursor-pointer">${dataRepo[i].name}</h3>
+            <ul class="hidden w-full list-inside list-disc sub-repo">
+                <li class="text-sm">forks_count : ${dataRepo[i].forks_count}</li>
+                <li class="text-sm">watchers_count: ${dataRepo[i].watchers_count}</li>
+                <li class="text-sm">language : ${dataRepo[i].language}</li>
+                <li class="text-sm">url : <a href="${dataRepo[i].html_url}" target="_blank" class="text-blue-800 underline">${dataRepo[i].html_url}</a></li>
+                <li class="text-sm">desc : ${dataRepo[i].description}</li>
+            </ul>
+        </div>
+        `;
+    }
+    const repoCard = document.querySelector('#repo-card');
+    repoCard.innerHTML = fragment;
 }
