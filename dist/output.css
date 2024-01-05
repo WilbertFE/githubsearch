@@ -691,20 +691,12 @@ video {
   width: 200px;
 }
 
-.w-\[230px\] {
-  width: 230px;
-}
-
-.w-full {
-  width: 100%;
-}
-
 .w-\[240px\] {
   width: 240px;
 }
 
-.min-w-\[230px\] {
-  min-width: 230px;
+.w-full {
+  width: 100%;
 }
 
 .flex-1 {
@@ -914,54 +906,12 @@ video {
   display: block;
 }
 
-.placeholder\:text-blue-400::-moz-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(96 165 250 / var(--tw-text-opacity));
-}
-
-.placeholder\:text-blue-400::placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(96 165 250 / var(--tw-text-opacity));
-}
-
-.placeholder\:text-black\/10::-moz-placeholder {
-  color: rgb(0 0 0 / 0.1);
-}
-
-.placeholder\:text-black\/10::placeholder {
-  color: rgb(0 0 0 / 0.1);
-}
-
-.placeholder\:text-black\/20::-moz-placeholder {
-  color: rgb(0 0 0 / 0.2);
-}
-
-.placeholder\:text-black\/20::placeholder {
-  color: rgb(0 0 0 / 0.2);
-}
-
 .placeholder\:text-black\/30::-moz-placeholder {
   color: rgb(0 0 0 / 0.3);
 }
 
 .placeholder\:text-black\/30::placeholder {
   color: rgb(0 0 0 / 0.3);
-}
-
-.placeholder\:text-opacity-50::-moz-placeholder {
-  --tw-text-opacity: 0.5;
-}
-
-.placeholder\:text-opacity-50::placeholder {
-  --tw-text-opacity: 0.5;
-}
-
-.placeholder\:text-opacity-20::-moz-placeholder {
-  --tw-text-opacity: 0.2;
-}
-
-.placeholder\:text-opacity-20::placeholder {
-  --tw-text-opacity: 0.2;
 }
 
 .hover\:bg-slate-700:hover {

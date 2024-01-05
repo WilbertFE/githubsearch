@@ -8,6 +8,23 @@ const user = document.querySelector('#user');
 const repo = document.querySelector('#repository');
 const animation = document.querySelector('#animation');
 
+
+// data dummy
+(async function(){
+    try{
+    // hero dan user
+    const dataUser = await getDataUser('wilbertfe');
+    updateHero(dataUser);
+    updateUser(dataUser);
+    // repo
+    const dataRepo = await getDataRepo('wilbertfe');
+    updateRepo(dataRepo, dataUser);
+    } catch(err){
+        alert('gagal meminta data');
+        console.error(err);
+    }
+})();
+
 // fetch data ketika tombol diklik
 myBtn.addEventListener('click', async function(){
     // menonaktifkan setiap section
@@ -58,6 +75,8 @@ document.addEventListener('click', function(e) {
 
 
 
+
+
 function getDataUser(username){
     return fetch(`https://api.github.com/users/${username}`)
         .then(response => {
@@ -88,7 +107,6 @@ function updateHero(dataUser){
         </div>
     </div>
     `;
-    const hero = document.querySelector('#hero');
     hero.innerHTML = fragment;
 }
 
@@ -129,7 +147,6 @@ function updateUser(dataUser){
             </div>
         </div>
     `;
-    const user = document.querySelector('#user');
     user.innerHTML = fragment;
 }
 
