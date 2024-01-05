@@ -19,8 +19,10 @@ const animation = document.querySelector('#animation');
     // repo
     const dataRepo = await getDataRepo('wilbertfe');
     updateRepo(dataRepo, dataUser);
+    // tunjukkin repo section
+    repo.classList.remove('hidden');
     } catch(err){
-        alert('gagal meminta data');
+        alert(err);
         console.error(err);
     }
 })();
@@ -68,9 +70,6 @@ document.addEventListener('click', function(e) {
         e.target.classList.toggle('judul-repo');
     }
 });
-
-
-
 
 
 
@@ -161,12 +160,12 @@ function updateRepo(dataRepo, dataUser){
         fragment += `
         <div class="flex flex-wrap my-4">
             <h1 class="text-dark font-medium">repo_${i+1} :</h1>
-            <h3 class="nama-repo ml-2 text-blue-800 underline cursor-pointer">${dataRepo[i].name}</h3>
+            <h3 class="nama-repo ml-2 text-blue-800 underline cursor-pointer truncate flex-1 overflow-hidden">${dataRepo[i].name}</h3>
             <ul class="hidden w-full list-inside list-disc sub-repo">
                 <li class="text-sm">forks_count : ${dataRepo[i].forks_count}</li>
                 <li class="text-sm">watchers_count: ${dataRepo[i].watchers_count}</li>
                 <li class="text-sm">language : ${dataRepo[i].language}</li>
-                <li class="text-sm">url : <a href="${dataRepo[i].html_url}" target="_blank" class="text-blue-800 underline">${dataRepo[i].html_url}</a></li>
+                <li class="text-sm truncate">url : <a href="${dataRepo[i].html_url}" target="_blank" class="text-blue-800 underline">${dataRepo[i].html_url}</a></li>
                 <li class="text-sm">desc : ${dataRepo[i].description}</li>
             </ul>
         </div>
