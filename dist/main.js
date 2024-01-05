@@ -1,10 +1,12 @@
 
 
 const myBtn = document.querySelector('#my-btn');
+const input = document.querySelector('#input-value');
+
 
 myBtn.addEventListener('click', async function(){
     // mengambil data user
-    const dataUser = await getDataUser();
+    const dataUser = await getDataUser(input.value);
     // update ui hero
     updateHero(dataUser);
     // update ui user
@@ -17,9 +19,8 @@ myBtn.addEventListener('click', async function(){
 
 
 
-
 function getDataUser(username){
-    return fetch('https://api.github.com/users/sandhikagalih')
+    return fetch(`https://api.github.com/users/${username}`)
         .then(response => response.json())
         .then(response => response);
 }
@@ -31,7 +32,7 @@ function updateHero(dataUser){
         <div class="flex flex-wrap mx-4">
             <div class="w-full">
                 <img src="${dataUser.avatar_url}" alt="profile" class="w-[200px] h-[200px] block mx-auto my-6 rounded-full shadow-lg border"/>
-                <h1 class="text-dark text-3xl font-bold text-center">Wilbert Bernardi</h1>
+                <h1 class="text-dark text-3xl font-bold text-center">${dataUser.name}</h1>
                 <h3 class="text-dark text-lg font-light text-center"><span class="w-4 h-5 inline-block bg-cover bg-center mr-1" style="background-image: url(src/img/icon/maps-and-flags.png);"></span>${dataUser.location}</h3>
             </div>
         </div>
@@ -39,6 +40,7 @@ function updateHero(dataUser){
     `;
     const hero = document.querySelector('#hero');
     hero.innerHTML = fragment;
+    input.value = '';
 }
 
 function updateUser(dataUser){
